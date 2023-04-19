@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Arrow
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -50,6 +52,6 @@ TagManager:
   - name: Obstacle
     uniqueID: 1391808573
     locked: 0
-  - name: Player
+  - name: Units
     uniqueID: 3449962681
     locked: 0

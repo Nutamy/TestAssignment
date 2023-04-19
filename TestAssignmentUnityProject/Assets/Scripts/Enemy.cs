@@ -9,6 +9,20 @@ public class Enemy : MonoBehaviour
 
     // максимальное расстояние, на которое объект может переместиться
     [SerializeField] private float moveDistance = 10f; 
+
+    [Tooltip("Предельные значения координат области перемещения врагов")]
+    [Range(1f, 30f)]
+    [SerializeField] private float maxX = 28f;
+
+    [Range(1f, 30f)]
+    [SerializeField] private float maxY = 28f;
+
+    [Range(-1f, -30f)]
+    [SerializeField] private float minX = -28f;
+
+    [Range(-1f, -30f)]
+    [SerializeField] private float minY = -28f;
+
     
 
     void Start()
@@ -21,11 +35,15 @@ public class Enemy : MonoBehaviour
         // выбираем случайную позицию внутри радиуса moveDistance
         Vector2 targetPos = (Vector2)transform.position + Random.insideUnitCircle * moveDistance;
 
+        // ограничиваем координаты x и y в заданном диапазоне
+        targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
+        targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
+
         // вычисляем длительность перемещения
         float duration = Vector2.Distance(transform.position, targetPos) / moveSpeed;
 
         // перемещаем объект к выбранной позиции и затем начинаем снова
-        transform.DOMove(targetPos, duration).SetEase(Ease.Linear).OnComplete(StartMoving);            
+        transform.DOMove(targetPos, duration).SetEase(Ease.Linear).OnComplete(StartMoving);  
     }
 
     void StopMoving()
