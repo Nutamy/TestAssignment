@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grass
+    uniqueID: 1020186661
+    locked: 0
+  - name: Decor
+    uniqueID: 634703561
+    locked: 0
+  - name: Obstacle
+    uniqueID: 1391808573
+    locked: 0
+  - name: Player
+    uniqueID: 3449962681
+    locked: 0
